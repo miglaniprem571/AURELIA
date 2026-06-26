@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #050505;
+  color: #f5f5f5;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: radial-gradient(circle at top, rgba(255,255,255,0.08), transparent 30%), #050505;
+  color: #f5f5f5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(255,255,255,0.18);
+  color: #fff;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(24px, -18px, 0) scale(1.04);
+  }
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes dash-flow {
+  from {
+    stroke-dashoffset: 380;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes bar-grow {
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--bar-width);
+  }
+}
+
+@keyframes workflow-pulse {
+  0%,
+  100% {
+    transform: scale(0.96);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+@keyframes status-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.12);
+    opacity: 1;
+  }
+}
+
+body {
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(255,255,255,0.06), transparent 24%),
+    radial-gradient(circle at 90% 15%, rgba(255,255,255,0.04), transparent 18%),
+    linear-gradient(180deg, rgba(255,255,255,0.02), transparent 50%),
+    #050505;
+}
+
+.hero-shell::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top, rgba(255,255,255,0.09), transparent 40%);
+  pointer-events: none;
+}
+
+.hero-grid {
+  animation: pulse-soft 8s ease-in-out infinite;
+}
+
+.hero-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(60px);
+  opacity: 0.22;
+  pointer-events: none;
+  animation: drift 14s ease-in-out infinite;
+}
+
+.hero-orb-one {
+  inset: 12% 70% auto auto;
+  width: 280px;
+  height: 280px;
+  background: rgba(255,255,255,0.12);
+}
+
+.hero-orb-two {
+  inset: auto auto 8% 14%;
+  width: 220px;
+  height: 220px;
+  background: rgba(255,255,255,0.08);
+  animation-delay: -4s;
+}
+
+.hero-orb-three {
+  inset: 24% auto auto 48%;
+  width: 180px;
+  height: 180px;
+  background: rgba(255,255,255,0.07);
+  animation-delay: -9s;
+}
+
+.marquee-track {
+  animation: marquee 24s linear infinite;
+  will-change: transform;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.hero-workflow-line {
+  background: linear-gradient(90deg, rgba(255,255,255,0.18), rgba(255,255,255,0.02));
+  border-radius: 9999px;
+  opacity: 0.7;
+}
+
+.hero-workflow-node {
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.14);
+  transition: all 180ms ease-out;
+}
+
+.hero-workflow-node-active {
+  background: #f5f5f5;
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.14);
+  animation: workflow-pulse 1.4s ease-in-out infinite;
+}
+
+.feature-card:hover {
+  box-shadow: 0 24px 70px rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.18);
+  transform: translateY(-6px);
+}
+
+.feature-card:focus-visible,
+.btn-sweep:focus-visible,
+.pricing-card:focus-within {
+  outline: 2px solid rgba(255,255,255,0.8);
+  outline-offset: 3px;
+}
+
+.btn-sweep {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.btn-sweep::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.24) 50%, transparent 100%);
+  transform: translateX(-120%);
+  transition: transform 240ms ease-out;
+  z-index: -1;
+}
+
+.btn-sweep:hover::before,
+.btn-sweep:focus-visible::before {
+  transform: translateX(120%);
+}
+
+.btn-sweep:active {
+  transform: scale(0.98);
+}
+
+.pricing-card:hover {
+  transform: translateY(-4px) scale(1.01);
+}
+
+.pricing-badge {
+  animation: pulse-soft 2.8s ease-in-out infinite;
+}
+
+.dashboard-line {
+  stroke-dasharray: 380;
+  stroke-dashoffset: 380;
+  animation: dash-flow 1.2s ease-out forwards;
+}
+
+.dashboard-bar-fill {
+  animation: bar-grow 1s ease-out forwards;
+}
+
+.counter-value {
+  transition: transform 240ms ease-out;
+}
+
+.counter-value:hover {
+  transform: translateY(-1px);
+}
+
+.dashboard-status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-top: 1px;
+  border-radius: 9999px;
+  background: #f5f5f5;
+  box-shadow: 0 0 0 4px rgba(255,255,255,0.08);
+  animation: status-pulse 1.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

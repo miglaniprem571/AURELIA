@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/components/asseticon.tsx","./src/hooks/useintersection.ts","./src/hooks/usepricing.ts","./src/hooks/useresize.ts","./src/utils/animations.ts","./src/utils/pricingmatrix.ts"],"version":"5.9.3"}
